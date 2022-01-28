@@ -335,7 +335,7 @@ button {
 }
 
 .home__title {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: var(--font-black);
     line-height: 109%;
     margin-bottom: var(--mb-1);
