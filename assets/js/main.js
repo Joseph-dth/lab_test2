@@ -99,3 +99,81 @@ sr.reveal(`.home-swiper, .new-swiper, .newsletter__container`)
 sr.reveal(`.category__data, .trick__content, .footer__content`, { interval: 100 })
 sr.reveal(`.about__data, .discount__img`, { origin: 'left' })
 sr.reveal(`.about__img, .discount__data`, { origin: 'right' })
+
+
+var players = {}; // Object to store all YouTube video players
+var player;
+
+function onYouTubeIframeAPIReady() {
+    var videoContainers = document.querySelectorAll('.video-container');
+    videoContainers.forEach(function(container, index) {
+        var videoId = container.id; // Extract the video ID from the container ID (e.g., 'video1' becomes '1')
+        players[index] = new YT.Player(container.id, {
+            height: '360',
+            width: '640',
+            videoId: videoId, // Use the extracted video ID as the videoId
+            playerVars: {
+                'autoplay': 0, // Autoplay will be triggered later when in view
+                'controls': 1, // Show video controls
+                'loop': 1, // Loop the video
+                'modestbranding': 1, // Remove YouTube logo
+                'rel': 0, // Don't show related videos at the end
+                'showinfo': 1, // Hide video title and uploader information
+                'mute': 1 // Auto-mute the video
+            },
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    });
+    player = new YT.Player('player', {
+        height: '100%',
+        width: '100%',
+        videoId: 'GM7ZIPKmPlY', // Replace ABC123 with your video ID
+        playerVars: {
+            'autoplay': 1, // Autoplay the video
+            'controls': 1, // Show video controls
+            'loop': 1, // Loop the video
+            'modestbranding': 1, // Remove YouTube logo
+            'rel': 0, // Don't show related videos at the end
+            'showinfo': 0, // Hide video title and uploader information
+            'mute': 1 // Auto-mute the video
+        },
+        events: {
+            'onReady': onPlayerReady2
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    // Autoplay the video when it comes into view
+    var videoId = event.target.getVideoData().video_id;
+    if (isElementInViewport(event.target.getIframe())) {
+        event.target.playVideo();
+    } else {
+        var scrollListener = function() {
+            if (isElementInViewport(event.target.getIframe())) {
+                event.target.playVideo();
+                window.removeEventListener('scroll', scrollListener);
+            }
+        };
+        window.addEventListener('scroll', scrollListener);
+    }
+}
+
+function isElementInViewport(element) {
+    var rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
+
+
+
+function onPlayerReady2(event) {
+    // Autoplay the video when the player is ready
+    event.target.playVideo();
+}

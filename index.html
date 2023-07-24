@@ -95,10 +95,7 @@
         </section>
         <section class="section">
             <div class="container video_container">
-                <video width="100%" controls autoplay muted>  
-                    <source src="./assets/videos/1vu7x-twol4.mp4" type="video/mp4">
-                    Your browser does not support the video tag.  
-                </video>
+                <div class="" id="player"></div>
             </div>
 
         </section>
@@ -141,6 +138,24 @@
 
                 <img src="assets/img/undraw_services_-5-tv9.svg" alt="" class="about__img">
             </div>
+
+
+            <div class="container video_container2">
+                <div class="video-container" id="zoKbWJCmhOE"></div>
+                <div class="video-container" id="tHuQYUP5REU"></div>
+                <div class="video-container" id="SuPcuARF_w0"></div>
+            </div>
+            <div class="container video_container2">
+                <div class="video-container" id="NW_0GzEILBo"></div>
+                <div class="video-container" id="XE-dKV_YqUs"></div>
+                <div class="video-container" id="3Jv4iU-8mOw"></div>
+            </div>
+            <div class="container video_container2">
+                <div class="video-container" id="uhsLwGiEkqM"></div>
+                <div class="video-container" id="DCSld_sOTOA"></div>
+                <div class="video-container" id="GM7ZIPKmPlY"></div>
+            </div>
+
         </section>
 
         <!--==================== PROFESSOR ====================-->
@@ -420,14 +435,12 @@
         <section class="section newsletter" id="Contact">
             <div class="ContactUs__container container">
                 <h2 class="section__title">Contact Us</h2>
-                <p class="ContactUs__description">
-                    輸入您的email，我們會儘速聯絡您！
-                </p>
-
-                <form action="" class="ContactUs__form">
-                    <input type="text" placeholder="Enter your email" class="ContactUs__input">
-                    <button class="button">Submit</button>
-                </form>
+                <!--<p class="ContactUs__description">
+                    contact@example.com
+                </p>-->
+                <a href="mailto:contact@example.com" class="contact_button">
+                    <button class="button">Contact Us via Email</button>
+                </a>
             </div>
         </section>
     </main>
@@ -451,6 +464,9 @@
 
     <!--=============== SWIPER JS ===============-->
     <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+
 
     <!--=============== MAIN JS ===============-->
     <script src="assets/js/main.js"></script>
